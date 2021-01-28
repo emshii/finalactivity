@@ -2,6 +2,15 @@
     include_once("config.php");
 
     $result = mysqli_query($mysqli, "SELECT * FROM users");
+
+    //initialize session
+    session_start();
+
+    if( !isset($_SESSION['email']) || empty($_SESSION['email']))
+    {
+        header('location: login.php');
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <title>Document</title>
+    <title>PHP CRUD</title>
     <style>
         
     </style>
@@ -44,7 +53,9 @@
             ?>
         
         </table>
-        <a class="text-light mr-4 float-right" href = "add.html">Add new Data </a><br><br>
+        <a class="text-light mr-1 float-right btn btn-dark" href = "add.html">Add new Data </a>
+
+        <p><a href="logout.php" class="btn btn-dark">Logout</a></p>
     </div>
 
 
