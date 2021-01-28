@@ -55,12 +55,14 @@ while( $res = mysqli_fetch_array($result))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <title>Edit Data</title>
 </head>
-<body>
-
-    <form name="form1" method="post" action="edit.php">
-    <table width="25%" border="0">
+<body style = "background-image: url('Back.png')">
+    <div class="container-sm">
+    <h1 class="display-4 text-light ">Edit Information</h1>
+        <form name="form1" method="post" action="edit.php">
+            <table width="35%" class="text-center text-light ml-5 mt-4">
 				<tr>
 					<td>Name</td>
 					<td><input type="text" name="name" value="<?php echo $name;?>"/></td>
@@ -80,7 +82,8 @@ while( $res = mysqli_fetch_array($result))
 					<td><input type="submit" name="update" value="Update" /></td>
 				</tr>
 			</table>
-    </form>
+        </form>
+    </div>
     
 
 </body>
