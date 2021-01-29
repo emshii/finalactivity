@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 28, 2021 at 09:43 AM
+-- Generation Time: Jan 29, 2021 at 03:17 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test`
+-- Database: `loginapp`
 --
 
 -- --------------------------------------------------------
@@ -30,21 +30,21 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `age` int(3) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `age`, `email`, `date_created`) VALUES
-(4, 'divine', 21, 'divine@gmail.com', '2021-01-27 00:46:39'),
-(9, 'Humphrey Castro', 21, 'johnmichaeltejadaji@gmail.com', '2021-01-28 16:56:10'),
-(6, 'Mike', 31, 'johnmichaeltejadaji@gmail.com', '2021-01-27 17:37:12');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`) VALUES
+(1, 'John Michael', 'johnmichaeltejadaji@gmail.com', '$2y$10$xhbv2dPfVfjqoqRyjrmkl..ZYHOtpvrmn2IlKqa4ElpZVRLcmTYvS', '2021-01-28 16:38:11'),
+(2, 'Humphrey Castro', 'noynoybalatucan@yahoo.com.ph', '$2y$10$lhFl5Lqf8dRAMNlVXAOF8utP1uZiwmVvZBJ8721lv24xA/JpZrOxe', '2021-01-28 16:55:17'),
+(3, 'Kenneth', 'kennethbacaser@gmail.com', '$2y$10$PJTn87KVIttIcqp9L//9ouDNvtX1Dphij2sex.wrRZ3UPgpfX2Re.', '2021-01-28 22:23:10');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

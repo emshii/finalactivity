@@ -4,31 +4,27 @@
     if( isset($_POST['update']))
     {
         $id = mysqli_real_escape_string($mysqli, $_POST['id']);
-        $name = mysqli_real_escape_string($mysqli, $_POST['name']);
-        $age = mysqli_real_escape_string($mysqli, $_POST['age']);
-        $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+        $author = mysqli_real_escape_string($mysqli, $_POST['author']);
+        $quote = mysqli_real_escape_string($mysqli, $_POST['quote']);
 
-        if( empty($name) || empty($age) || empty($email)) 
+        if( empty($author) || empty($quote)) 
         {
-            if(empty($name))
+            if(empty($author))
             {
-                echo "<font color='red'> Name field is empty. </font> <br>";
+                echo "<font color='red'> Author field is empty. </font> <br>";
             }
 
-            if(empty($age))
+            if(empty($quote))
             {   
-                echo "<font color='red'> Age field is empty. </font> <br>";
+                echo "<font color='red'> Quote field is empty. </font> <br>";
             } 
 
-            if(empty($email))
-            {
-                echo "<font color='red'> Email field is empty. </font> <br>";
-            }
+
             echo "<br><a href ='javascript:self.history.back();'>Go Back </a>";
         }
         else
         {
-            $result = mysqli_query($mysqli, "UPDATE users set name='$name', age='$age', email='$email' WHERE id=$id");
+            $result = mysqli_query($mysqli, "UPDATE fam_quotes set author='$author',quote='$quote' WHERE id=$id");
             header("Location: index.php");
         
         }
@@ -38,15 +34,16 @@
 
 <?php
 
-$id = $_GET['id'];
-$result = mysqli_query($mysqli, "SELECT * FROM users where id=$id");
+    $id = $_GET['id'];
 
-while( $res = mysqli_fetch_array($result))
-{
-    $name = $res['name'];
-    $age = $res['age'];
-    $email = $res['email'];
-}
+    $result = mysqli_query($mysqli, "SELECT * FROM fam_quotes where id=$id");
+
+    while( $res = mysqli_fetch_array($result))
+    {
+    $author = $res['author'];
+    $quote = $res['quote'];
+    
+    }
 
 ?>
 
@@ -56,30 +53,27 @@ while( $res = mysqli_fetch_array($result))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>Edit Data</title>
 </head>
 <body style = "background-image: url('Back.png')">
     <div class="container-sm">
-    <h1 class="display-4 text-light ">Edit Information</h1>
-        <form name="form1" method="post" action="edit.php">
-            <table width="35%" class="text-center text-light ml-5 mt-4">
+    <h1 class="display-4 text-light shadow text-center ">Edit Information</h1>
+        <form class = "cent name="form1" method="post" action="edit.php">
+            <table class="text-center text-light ml-5 mt-4">
 				<tr>
-					<td>Name</td>
-					<td><input type="text" name="name" value="<?php echo $name;?>"/></td>
+					<td class="shadow">Author</td>
+					<td><input  class="mb-1 ml-2"  type="text" name="author" value="<?php echo $author;?>"/></td>
 				</tr>
 				<tr>
-					<td>Age</td>
-					<td><input type="text" name="age" value="<?php echo $age;?>"/></td>
-				</tr>
-				<tr>
-					<td>Email</td>
-					<td><input type="text" name="email" value="<?php echo $email;?>"/></td>
+					<td class="shadow">Quote</td>
+					<td><input  class="mt-1 ml-2 " type="text" name="quote" value="<?php echo $quote;?>"/></td>
 				</tr>
 				<tr>
 					<td>
                         <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
                     </td>
-					<td><input type="submit" name="update" value="Update" /></td>
+					<td><input class="text-light mr-1 mt-2 btn btn-dark" type="submit" name="update" value="Update" /></td>
 				</tr>
 			</table>
         </form>

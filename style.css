@@ -1,0 +1,16 @@
+a {
+	color: white;
+}
+a:hover {
+	color: black;
+}
+.shadow {
+	text-shadow: 2px 2px 5px teal;
+}
+
+.cent {
+	left: 30%;
+	top: 15%;
+
+	position: absolute;
+}

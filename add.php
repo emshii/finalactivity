@@ -1,5 +1,11 @@
 <?php
     include_once("config.php");
+
+
+    
+    echo"<font color='whitesmoke'> The added value is : ".$_POST['author'].'<br>';
+    echo"<font color='whitesmoke'> The added value is : ".$_POST['quote'].'<br>';
+    
 ?>
 
 <!DOCTYPE html>
@@ -17,32 +23,29 @@
 <?php 
    if( isset($_POST['Submit']))
    {
-        $name = mysqli_real_escape_string($mysqli, $_POST['name']);
-        $age = mysqli_real_escape_string($mysqli, $_POST['age']);
-        $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+        $author = mysqli_real_escape_string($mysqli, $_POST['author']);
+        $quote = mysqli_real_escape_string($mysqli, $_POST['quote']);
+        
 
-        if( empty($name) || empty($age) || empty($email)) 
+        if( empty($author) || empty($quote)) 
         {
-            if(empty($name))
+            if(empty($author))
             {
-                echo "<font color='red'> Name field is empty. </font> <br>";
+                echo "<font color='red'> Author field is empty. </font> <br>";
             }
 
-            if(empty($age))
+            if(empty($quote))
             {   
-                echo "<font color='red'> Age field is empty. </font> <br>";
+                echo "<font color='red'> Quote field is empty. </font> <br>";
             } 
 
-            if(empty($email))
-            {
-                echo "<font color='red'> Email field is empty. </font> <br>";
-            }
+            
             echo "<br><a href ='javascript:self.history.back();'>Go Back </a>";
         }
         else
         {
-            $result = mysqli_query($mysqli, "INSERT INTO users(name, age, email) VALUES ('$name', '$age', '$email')");
-            echo "<font color='green'> Data Added Successfully.";
+            $result = mysqli_query($mysqli, "INSERT INTO fam_quotes(author, quote) VALUES ('$author', '$quote')");
+            echo "<font color=green'> Data Added Successfully.";
             echo "<br> <a href='index.php'> View Result </a>"; 
         
         }
